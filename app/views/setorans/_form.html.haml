@@ -1,0 +1,22 @@
+= form_for @setoran do |f|
+  -if @setoran.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@setoran.errors.count, "error")} prohibited this setoran from being saved:"
+      %ul
+        - @setoran.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :nasabah_id
+    = f.number_field :nasabah_id
+  .field
+    = f.label :actor_id
+    = f.number_field :actor_id
+  .field
+    = f.label :amount
+    = f.number_field :amount
+  .field
+    = f.label :term
+    = f.number_field :term
+  .actions
+    = f.submit 'Save'

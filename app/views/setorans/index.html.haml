@@ -1,0 +1,25 @@
+%h1 Listing setorans
+
+%table
+  %tr
+    %th Nasabah
+    %th Actor
+    %th Amount
+    %th Term
+    %th
+    %th
+    %th
+
+  - @setorans.each do |setoran|
+    %tr
+      %td= setoran.nasabah_id
+      %td= setoran.actor_id
+      %td= setoran.amount
+      %td= setoran.term
+      %td= link_to 'Show', setoran
+      %td= link_to 'Edit', edit_setoran_path(setoran)
+      %td= link_to 'Destroy', setoran, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Setoran', new_setoran_path

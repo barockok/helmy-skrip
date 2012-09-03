@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120903203439) do
+ActiveRecord::Schema.define(:version => 20120903213038) do
 
   create_table "nasabah_statuses", :force => true do |t|
     t.integer  "nasabah_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20120903203439) do
     t.text     "keterangan"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "actor_id"
   end
 
   create_table "nasabahs", :force => true do |t|
@@ -53,6 +54,15 @@ ActiveRecord::Schema.define(:version => 20120903203439) do
     t.string   "agama"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "setorans", :force => true do |t|
+    t.integer  "nasabah_id"
+    t.integer  "actor_id"
+    t.integer  "amount"
+    t.integer  "term"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

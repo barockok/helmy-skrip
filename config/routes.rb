@@ -1,4 +1,6 @@
 Fayad::Application.routes.draw do
+  resources :setorans
+
   get "auth/login"
 
   get "auth/logout"

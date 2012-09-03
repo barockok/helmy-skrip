@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Nama lengkap:
+  = @user.nama_lengkap
+%p
+  %b Role type:
+  = @user.role_type
+%p
+  %b Username:
+  = @user.username
+%p
+  %b Password:
+  = @user.password
+%p
+  %b Jabatan:
+  = @user.jabatan
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path

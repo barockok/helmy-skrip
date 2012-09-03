@@ -1,4 +1,4 @@
-class NasabahsController < ApplicationController
+class NasabahsController < BaseController
   # GET /nasabahs
   # GET /nasabahs.json
   def index

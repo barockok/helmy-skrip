@@ -1,0 +1,6 @@
+class AddMoreToAdminUsers < ActiveRecord::Migration
+  def change
+    add_column :admin_users, :name, :string
+    add_column :admin_users, :role, :integer
+  end
+end

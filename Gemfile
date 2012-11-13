@@ -21,5 +21,5 @@ group :assets do
 end
 gem 'jquery-rails'
 gem "haml", ">= 3.1.6"
-gem "haml-rails", ">= 0.3.4", :group => :development
+gem "haml-rails", ">= 0.3.4"
 gem 'sqlite3' ,:group => :test

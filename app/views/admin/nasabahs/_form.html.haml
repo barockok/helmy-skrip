@@ -1,0 +1,5 @@
+= semantic_form_for [:admin , @nasabah] do |f|
+	= f.inputs "Data nasabah" do
+		- [:nama_lengkap].each do |a|
+			=f.input a
+	= f.actions

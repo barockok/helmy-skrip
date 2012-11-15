@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'activerecord-postgresql-adapter'
 gem 'pg'
-gem 'activeadmin'
+gem 'activeadmin' , :git => 'https://github.com/barock19/active_admin.git'
 group :test,  :development do
   gem 'rspec-rails'
   gem 'growl'

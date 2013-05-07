@@ -24,6 +24,7 @@ class ProductsController < InternalController
   # POST /products
   # POST /products.json
   def create
+    puts product_params
     @product = Product.new(product_params)
 
     respond_to do |format|

@@ -4,9 +4,21 @@
 			.container
 				.logo-brand
 					%a{:href => root_url}
-						=image_tag('/assets/icon_brand.png')
+						=image_tag('icon_brand.png')
 				%a.brand{:href => root_url}
 					Bank Syariah 
 					%b AT-Taqwa
 				.nav-collapse.collapse.navbar-responsive-collapse
 					=render 'top_menu'
+				%ul.nav.pull-right{:style => 'margin-right:15px'}
+					-if current_user
+						%li.dropdown
+							%a.dropdown-toggle{:href=>"#", 'data-toggle' => "dropdown"}
+								%i.icon.icon-user
+								%b.caret
+							%ul.dropdown-menu
+								%li
+									=link_to current_user.email, '#'
+								%li.divider
+								%li
+									=link_to '<i class="icon icon-off"></i> Keluar'.html_safe, destroy_user_session_path, :method => "delete"

@@ -1,5 +1,14 @@
-%h1 New product
+.component-heading
+	.row-fluid
+		.span8
+			%h3.no-bold
+				%i.icon.icon-barcode
+				Products Baru
+		.span4
+			.pull-right
+				= link_to 'Back', products_path, :class => 'btn'
+
+
 
 = render 'form'
 
-= link_to 'Back', products_path

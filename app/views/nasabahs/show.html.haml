@@ -1,6 +1,139 @@
-%p#notice= notice
+.component-heading
+	.row-fluid
+		.span8
+			%small Data Nasabah
+			%h3.no-bold
+				%i.icon.icon-group
+				=@nasabah.nama_lengkap
+		.span4
+			.pull-right
+				.btn-group
+					-if @nasabah.approved? == false
+						= link_to '<i class="icon icon-ok-sign"></i> Approve'.html_safe, approve_nasabah_path(@nasabah), :class => 'btn btn-info', :title => 'Approve', :method => :patch
 
+					= link_to '<i class="icon icon-pencil"></i> Edit'.html_safe, edit_nasabah_path(@nasabah), :class => 'btn'
+					= link_to '<i class="icon icon-arrow-left"></i> Back'.html_safe, nasabahs_path, :class => 'btn'
 
-= link_to 'Edit', edit_nasabah_path(@nasabah)
-\|
-= link_to 'Back', nasabahs_path
+.row-fluid
+	.span8
+
+		%table.table-condensed.table-stripped.table
+			%tbody
+				%tr
+					%td{:colspan => '2'}
+						%h4 Data Pribadi
+				%tr
+					%td.span3
+						%b Status Pernikahan
+					%td.span9=@nasabah.status_pernikahan.titleize
+				%tr
+					%td.span3
+						%b Tanggal lahir
+					%td.span9=@nasabah.tanggal_lahir
+				%tr
+					%td.span3
+						%b Kewarganegaraan
+					%td.span9=@nasabah.kewarganegaraan.titleize
+				%tr
+					%td.span3
+						%b No Identitas
+					%td.span9="#{@nasabah.no_identitas}(#{@nasabah.type_identitas}) - sampai #{@nasabah.expire_identitas}"
+				%tr
+					%td.span3
+						%b Alamat Rumah
+					%td.span9=@nasabah.alamat_rumah
+				%tr
+					%td.span3
+						%b Alamat Surat
+					%td.span9=@nasabah.alamat_surat
+				%tr
+					%td.span3
+						%b Email
+					%td.span9=@nasabah.email
+				%tr
+					%td.span3
+						%b No. Ponsel
+					%td.span9=@nasabah.no_ponsel
+				%tr
+					%td{:colspan => 2}
+						%h4 Data Pekerjaan
+				%tr
+					%td.span3
+						%b Pekerjaan utama
+					%td.span9=@nasabah.pekerjaan_utama
+				%tr
+					%td.span3
+						%b Pendapatan Bulanan
+					%td.span9=@nasabah.pendapatan_bulanan
+				%tr
+					%td.span3
+						%b Bidang usaha
+					%td.span9=@nasabah.bidang_usaha
+				%tr
+					%td.span3
+						%b No. Tlp Kantor
+					%td.span9=@nasabah.no_tlp_kantor
+				%tr
+					%td.span3
+						%b No. NPWP
+					%td.span9=@nasabah.no_npwp
+				%tr
+					%td.span3
+						%b No. Faximile
+					%td.span9=@nasabah.no_faximile
+				%tr
+					%td{:colspan => 2}
+						%h4 Data Pelengkap
+
+				%tr
+					%td.span3
+						%b Rek. Koran Gabungan
+					%td.span9=@nasabah.rekening_koran_gabungan
+				%tr
+					%td.span3
+						%b Status rumah tinggal
+					%td.span9=@nasabah.status_rumah_tinggal
+				%tr
+					%td.span3
+						%b Tanggal rumah tinggal
+					%td.span9=@nasabah.tanggal_rumah_tinggal
+				%tr
+					%td.span3
+						%b No Tel rumah
+					%td.span9=@nasabah.no_tlp_rumah
+				%tr
+					%td.span3
+						%b Sumber dana
+					%td.span9=@nasabah.sumber_dana
+				%tr
+					%td.span3
+						%b Tujuan penggunaan dana
+					%td.span9=@nasabah.tujuan_penggunaan_dana
+				%tr
+					%td.span3
+						%b Tujuan penggunaan rekening
+					%td.span9=@nasabah.tujuan_penggunaan_rekening
+				%tr
+					%td.span3
+						%b Nama Ibu Kandung
+					%td.span9=@nasabah.nama_ibu_kandung
+				%tr
+					%td.span3
+						%b Agama
+					%td.span9=@nasabah.agama
+	.span4
+		%span Jenis Produk
+		%h3{:style => 'margin-top: 0px'}=@nasabah.product.name_version
+		%hr.both-off
+		/ .center-text
+		%small Completeness
+		%br
+		.btn-group
+			%span.btn.btn-large.btn-success.disabled.span6="#{@nasabah.completeness_product[:percent]} %"
+			%span.btn.btn-large.btn-info.disabled.span6="#{@nasabah.completeness_product[:left]} left"		
+		%hr
+		/ .center-text
+		%small Saldo
+		%br
+		%h2=money_formater @nasabah.saldo
+

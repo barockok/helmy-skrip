@@ -1,5 +1,5 @@
 class ProductsController < InternalController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_filter :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json

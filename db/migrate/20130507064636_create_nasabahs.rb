@@ -31,6 +31,7 @@ class CreateNasabahs < ActiveRecord::Migration
       t.string :nama_ibu_kandung
       t.string :agama
 
+      t.integer :product_id
       t.timestamps
     end
   end

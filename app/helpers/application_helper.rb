@@ -13,4 +13,8 @@ module ApplicationHelper
 		block = [block] if block.class == Symbol
 		@_block_off = block
 	end
+	def money_formater amount
+    number_to_currency(amount, :unit => "Rp", :format => '%u %n', :precision => 0 , :delimiter => ".")
+  end
+	
 end

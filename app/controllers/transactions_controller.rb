@@ -1,5 +1,5 @@
 class TransactionsController < InternalController
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_filter :set_transaction, only: [:show, :edit, :update, :destroy]
 
   # GET /transactions
   # GET /transactions.json

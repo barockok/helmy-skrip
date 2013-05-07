@@ -1,7 +1,13 @@
-%h1 Editing product
+.component-heading
+	.row-fluid
+		.span8
+			%small Editing Product
+			%h3.no-bold
+				%i.icon.icon-barcode
+				=@product.name_version
+		.span4
+			.pull-right
+				= link_to 'Back', products_path, :class => 'btn'
+
 
 = render 'form'
-
-= link_to 'Show', @product
-\|
-= link_to 'Back', products_path

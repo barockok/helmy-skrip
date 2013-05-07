@@ -1,5 +1,5 @@
 class NasabahsController < InternalController
-  before_action :set_nasabah, only: [:show, :edit, :update, :destroy]
+  before_filter :set_nasabah, only: [:show, :edit, :update, :destroy, :approve]
 
   # GET /nasabahs
   # GET /nasabahs.json
@@ -61,6 +61,15 @@ class NasabahsController < InternalController
     end
   end
 
+  def approve
+    @nasabah.update_attribute(:approved, true)
+    respond_to do |format|
+      format.html { redirect_to nasabahs_url }
+      format.json { head :no_content }
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_nasabah
@@ -69,6 +78,6 @@ class NasabahsController < InternalController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nasabah_params
-      params[:nasabah]
+      params.require(:nasabah).permit(:nama_lengkap , :tempa, :tanggal_lahir , :jenis_kelamin , :kewarganegaraan , :no_iden, :type_identitas, :expire_identitas, :no_npwp , :alamat_rumah, :alamat_surat, :no_tlp_kantor, :no_ponsel , :no_faximile , :email , :rekening_koran_gabungan , :status_pernikahan , :status_rumah_tinggal, :tanggal_rumah_tinggal, :no_tlp_rumah , :pekerjaan_utama, :pendapatan_bulanan , :bidang_usaha , :sumber_dana , :tujuan_penggunaan_dana , :tujuan_penggunaan_rekening , :nama_ibu_kandung , :agama, :product_id)
     end
 end

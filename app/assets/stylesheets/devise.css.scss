@@ -1,0 +1,17 @@
+body{
+	.container {
+		width: 450px;
+	}
+	.root-container{
+		// margin
+		border: 15px solid transparentize(#fff, 0.4);
+		border-radius: 7.5px;
+		> .inner {
+	 		min-height: 0px;
+		}
+	}
+	.page-heading {
+		margin-top: 40px;
+	}
+	
+}

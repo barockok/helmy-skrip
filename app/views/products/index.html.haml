@@ -1,34 +1,38 @@
 .component-heading
-  %h3.no-bold
-    %i.icon.icon-barcode
-    Products
+	.row-fluid
+		.span8
+			%h3.no-bold
+				%i.icon.icon-barcode
+				Products
+		.span4
+			.pull-right
+				= link_to 'New Product', new_product_path, :class => 'btn'
+
 
 %table.table.table-condensed.table-stripped
-  %tr
-    %th Name
-    %th First credit
-    %th Month credit
-    %th Description
-    %th Months period
-    %th Version
-    %th Produk code
-    %th
-    %th
-    %th
+	%tr
+		%th Name
+		%th First credit
+		%th Month credit
+		%th Months period
+		%th Version
+		%th Produk code
+		%th Action
 
-  - @products.each do |product|
-    %tr
-      %td= product.name
-      %td= product.first_credit
-      %td= product.month_credit
-      %td= product.description
-      %td= product.months_period
-      %td= product.version
-      %td= product.code
-      %td= link_to 'Show', product
-      %td= link_to 'Edit', edit_product_path(product)
-      %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+	- @products.each do |product|
+		%tr
+			%td= product.name
+			%td= money_formater product.first_credit
+			%td= money_formater product.month_credit
+			%td="#{product.months_period} (#{product.months_period/12} #{'year'.pluralize(product.months_period)})"
+			%td= product.version
+			%td= product.code
+			%td
+				.btn-group
+					= link_to '<i class="icon icon-pencil"></i>'.html_safe, edit_product_path(product), :class => 'btn btn-mini btn-primary', :title => 'Edit'
+					= link_to '<i class="icon icon-remove"></i>'.html_safe, product, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger', :title => 'Destroy'
+					= link_to '<i class="icon icon-upload-alt"></i>'.html_safe, edit_product_path(product), :class => 'btn btn-mini btn-info', :title => 'Upgrade'
 
 %br
 
-= link_to 'New Product', new_product_path

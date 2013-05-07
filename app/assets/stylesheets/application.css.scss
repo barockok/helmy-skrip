@@ -9,7 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap_overide
+ *= require bootstrap-datetimepicker.min
+
  *= require font-awesome.min
+ *= require chosen
  *= require_self
  */
 @import 'misc/mixins';
@@ -106,7 +109,7 @@ hr{
  		// padding-bottom:60px;
  		> .inner {
  			padding:10px 30px 50px;
- 			background: transparentize(#fff, .1);
+ 			background: transparentize(#fff,0);
 	 		min-height: 500px;
  		}
  	}

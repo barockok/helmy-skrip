@@ -1,0 +1,25 @@
+/ <h2>Forgot your password?</h2>
+
+/ <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+/   <%= devise_error_messages! %>
+
+/   <div><%= f.label :email %><br />
+/   <%= f.email_field :email, :autofocus => true %></div>
+
+/   <div><%= f.submit "Send me reset password instructions" %></div>
+/ <% end %>
+
+/ <%= render "users/shared/links" %>
+.center-text
+	%h3.no-bold Forgot your password
+%hr
+=form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+	.row-fluid
+		.span8
+			=f.email_field :password, :class => 'span12'
+		.span4
+			=f.button '<i class="icon icon-signin"></i> Submit'.html_safe, :class => 'btn btn-primary btn-block'	
+	%small System will send you email with link for resetting your password.
+%hr
+.center-text
+	%p= link_to "Sign in", new_session_path(resource_name)

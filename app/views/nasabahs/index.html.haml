@@ -1,21 +1,41 @@
 .component-heading
-	%h3.no-bold
-		%i.icon.icon-group
-		Data Nasabah
+	.row-fluid
+		.span8
+			%h3.no-bold
+				%i.icon.icon-group
+				Data Nasabah
+		.span4
+			.pull-right
+				=link_to '<i class="icon icon-plus-sign"></i> Nasabah Baru'.html_safe, new_nasabah_path, :class => 'btn btn-primary'
 
 
 %table.table.table-condensed.table-stripped
 	%tr
+		%th Nama
+		%th No. Rek
+		%th Product
+		%th Saldo
 		%th
-		%th
-		%th
+			.center-text Product Completeness
+		%th action
 
 	- @nasabahs.each do |nasabah|
+
 		%tr
-			%td= link_to 'Show', nasabah
-			%td= link_to 'Edit', edit_nasabah_path(nasabah)
-			%td= link_to 'Destroy', nasabah, :method => :delete, :data => { :confirm => 'Are you sure?' }
+			%td=link_to nasabah.nama_lengkap, nasabah
+			%td=nasabah.account_number
+			%td=nasabah.product.name_version
+			%td=money_formater nasabah.saldo
+			%td
+				.center-text
+					.btn-group
+						%span.btn.btn-mini.btn-success.disabled="#{nasabah.completeness_product[:percent]} %"
+						%span.btn.btn-mini.btn-info.disabled="#{nasabah.completeness_product[:left]} left"					
+			%td
+				.btn-group
+					= link_to '<i class="icon icon-pencil"></i>'.html_safe, edit_nasabah_path(nasabah), :class => 'btn btn-mini btn-primary', :title => 'Edit'
+					-if nasabah.approved? == false
+						= link_to '<i class="icon icon-ok-sign"></i>'.html_safe, approve_nasabah_path(nasabah), :class => 'btn btn-mini btn-info', :title => 'Approve', :method => :patch
+					= link_to '<i class="icon icon-remove"></i>'.html_safe, nasabah, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger', :title => 'Destroy'
+				
 
-%br
-
-= link_to 'New Nasabah', new_nasabah_path

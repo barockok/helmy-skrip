@@ -1,0 +1,32 @@
+.component-heading
+	%h3.no-bold
+		%i.icon.icon-exchange
+		Transactions
+
+
+%table.table.table-condensed.table-stripped
+	%thead
+		%tr
+			%th Nasabah
+			%th Debit
+			%th Credit
+			%th Description
+			%th Product
+			%th
+			%th
+			%th
+	%tbody
+		- @transactions.each do |transaction|
+			%tr
+				%td= transaction.nasabah_id
+				%td= transaction.debit
+				%td= transaction.credit
+				%td= transaction.description
+				%td= transaction.product_id
+				%td= link_to 'Show', transaction
+				%td= link_to 'Edit', edit_transaction_path(transaction)
+				%td= link_to 'Destroy', transaction, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Transaction', new_transaction_path

@@ -1,0 +1,147 @@
+= form_for @nasabah do |f|
+	- if @nasabah.errors.any?
+		#error_explanation
+			%h2= "#{pluralize(@nasabah.errors.count, "error")} prohibited this nasabah from being saved:"
+			%ul
+				- @nasabah.errors.full_messages.each do |msg|
+					%li= msg
+					
+	.form-horizontal
+		.control-group
+			=f.label :nama_lengkap, :class => 'control-label'
+			.controls
+				=f.text_field :nama_lengkap, :class => 'span12'
+		.control-group
+			=f.label :tanggal_lahir, :class => 'control-label'
+			.controls
+				=f.text_field :tanggal_lahir, :class => 'span12'
+
+		.control-group
+			=f.label :jenis_kelamin, :class => 'control-label'
+			.controls
+				=f.text_field :jenis_kelamin, :class => 'span12'	
+
+		.control-group
+			=f.label :kewarganegaraan, :class => 'control-label'
+			.controls
+				=f.text_field :kewarganegaraan, :class => 'span12'
+
+		.control-group
+			=f.label :no_identitas, :class => 'control-label'
+			.controls
+				=f.text_field :no_identitas, :class => 'span12'
+
+		.control-group
+			=f.label :type_identitas, :class => 'control-label'
+			.controls
+				=f.text_field :type_identitas, :class => 'span12'
+		.control-group
+			=f.label :expire_identitas, :class => 'control-label'
+			.controls
+				=f.text_field :expire_identitas, :class => 'span12'					
+		.control-group
+			=f.label :no_npwp, :class => 'control-label'
+			.controls
+				=f.text_field :no_npwp, :class => 'span12'
+		.control-group
+			=f.label :alamat_rumah, :class => 'control-label'
+			.controls
+				=f.text_field :alamat_rumah, :class => 'span12'
+
+		.control-group
+			=f.label :alamat_surat, :class => 'control-label'
+			.controls
+				=f.text_field :alamat_surat, :class => 'span12'
+		.control-group
+			=f.label :no_tlp_kantor, :class => 'control-label'
+			.controls
+				=f.text_field :no_tlp_kantor, :class => 'span12'
+
+		.control-group
+			=f.label :no_ponsel, :class => 'control-label'
+			.controls
+				=f.text_field :no_ponsel, :class => 'span12'
+
+		.control-group
+			=f.label :no_tlp_kantor, :class => 'control-label'
+			.controls
+				=f.text_field :no_tlp_kantor, :class => 'span12'
+
+		.control-group
+			=f.label :no_faximile, :class => 'control-label'
+			.controls
+				=f.text_field :no_faximile, :class => 'span12'
+
+		.control-group
+			=f.label :email, :class => 'control-label'
+			.controls
+				=f.text_field :email, :class => 'span12'
+
+		.control-group
+			=f.label :rekening_koran_gabungan, :class => 'control-label'
+			.controls
+				=f.text_field :rekening_koran_gabungan, :class => 'span12'
+
+		.control-group
+			=f.label :status_pernikahan, :class => 'control-label'
+			.controls
+				=f.text_field :status_pernikahan, :class => 'span12'
+
+		.control-group
+			=f.label :status_rumah_tinggal, :class => 'control-label'
+			.controls
+				=f.text_field :status_rumah_tinggal, :class => 'span12'
+
+		.control-group
+			=f.label :tanggal_rumah_tinggal, :class => 'control-label'
+			.controls
+				=f.text_field :tanggal_rumah_tinggal, :class => 'span12'
+
+		.control-group
+			=f.label :no_tlp_rumah, :class => 'control-label'
+			.controls
+				=f.text_field :no_tlp_rumah, :class => 'span12'
+
+		.control-group
+			=f.label :pekerjaan_utama, :class => 'control-label'
+			.controls
+				=f.text_field :pekerjaan_utama, :class => 'span12'
+
+		.control-group
+			=f.label :pendapatan_bulanan, :class => 'control-label'
+			.controls
+				=f.text_field :pendapatan_bulanan, :class => 'span12'
+
+		.control-group
+			=f.label :bidang_usaha, :class => 'control-label'
+			.controls
+				=f.text_field :bidang_usaha, :class => 'span12'
+
+		.control-group
+			=f.label :sumber_dana, :class => 'control-label'
+			.controls
+				=f.text_field :sumber_dana, :class => 'span12'
+
+		.control-group
+			=f.label :tujuan_penggunaan_dana, :class => 'control-label'
+			.controls
+				=f.text_field :tujuan_penggunaan_dana, :class => 'span12'
+
+		.control-group
+			=f.label :tujuan_penggunaan_rekening, :class => 'control-label'
+			.controls
+				=f.text_field :tujuan_penggunaan_rekening, :class => 'span12'
+
+		.control-group
+			=f.label :nama_ibu_kandung, :class => 'control-label'
+			.controls
+				=f.text_field :nama_ibu_kandung, :class => 'span12'
+
+		.control-group
+			=f.label :agama, :class => 'control-label'
+			.controls
+				=f.text_field :agama, :class => 'span12'
+
+
+	.form-actions
+		= f.submit 'Save', :class => 'btn'

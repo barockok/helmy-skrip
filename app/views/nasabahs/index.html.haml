@@ -1,0 +1,21 @@
+.component-heading
+	%h3.no-bold
+		%i.icon.icon-group
+		Data Nasabah
+
+
+%table.table.table-condensed.table-stripped
+	%tr
+		%th
+		%th
+		%th
+
+	- @nasabahs.each do |nasabah|
+		%tr
+			%td= link_to 'Show', nasabah
+			%td= link_to 'Edit', edit_nasabah_path(nasabah)
+			%td= link_to 'Destroy', nasabah, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Nasabah', new_nasabah_path

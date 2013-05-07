@@ -1,0 +1,9 @@
+%ul.nav
+	%li{:class => params[:controller] == 'nasabahs' ? 'active' : ''}
+		=link_to '<i class="icon icon-group"></i> Data Nasabah'.html_safe, nasabahs_path
+	%li{:class => params[:controller] == 'transactions' ? 'active' : ''}
+		=link_to  '<i class="icon icon-exchange"></i> Transaction'.html_safe, transactions_path
+	%li{:class => params[:controller] == 'products' ? 'active' : ''}
+		=link_to  '<i class="icon icon-barcode"></i> Produk'.html_safe, products_path			
+	%li
+		=link_to  '<i class="icon icon-bar-chart"></i> Report'.html_safe, '#'

@@ -1,0 +1,12 @@
+.navbar.navbar-fixed-top#topest-bar
+	.navbar
+		.navbar-inner
+			.container
+				.logo-brand
+					%a{:href => root_url}
+						=image_tag('/assets/icon_brand.png')
+				%a.brand{:href => root_url}
+					Bank Syariah 
+					%b AT-Taqwa
+				.nav-collapse.collapse.navbar-responsive-collapse
+					=render 'top_menu'

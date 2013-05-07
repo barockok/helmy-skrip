@@ -1,0 +1,67 @@
+#chrome-store-link{
+	display:none;
+}
+.pagination {
+	display:none;
+}
+.print-fotter{
+	border-top: 1px solid #bbbbbb;
+	padding-top:15px;
+	position: relative;
+	#footer-logo {
+		width:100px;
+	}
+	small.copyright{
+		position: absolute;
+		left: 110px;
+		color:#acacac;
+		bottom:0px;
+		padding:0px;
+		margin: 0px;
+		line-height: 13px;
+	}
+}
+a{
+	color:inherit;
+}
+body{
+	background-image:none;
+	background-repeat: repeat;
+	background-color: #fff;
+	.root-container{
+		width:100%;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	}
+}
+.btn {
+	display:none;
+}
+* {
+  -webkit-print-color-adjust: exact;
+}
+.dont-print {
+	display:none !important;
+}
+.dont-screen {
+	display:block !important;	
+}
+
+#topest-bar{
+	display:none;
+}
+
+
+#booking-eticket{
+	.header-title{
+		margin:0px;
+		padding:0px;
+		font-weight: normal;
+
+	}
+	.booking-number{
+		margin: 0px;
+		padding:0px;
+	}
+}

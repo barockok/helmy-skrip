@@ -16,7 +16,9 @@ group :production do
   gem 'activerecord-postgresql-adapter'
   gem 'pg'
 end
-
+gem 'bootstrap-sass', '~> 2.3.1.0'
+gem 'haml'
+gem 'haml-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'

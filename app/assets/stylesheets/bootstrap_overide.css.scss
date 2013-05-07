@@ -1,0 +1,82 @@
+
+@import "bootstrap";
+body{
+  font-size: 80%;
+}
+.navbar{
+	margin-bottom:0px;
+}
+.modal-body {
+position: relative;
+max-height: auto;
+padding: 15px;
+overflow-x: visible;
+overflow-y:visible;
+ &.scroll{
+  overflow-x:scroll;
+  overflow-y:scroll;
+ }
+}
+
+.ui-front {
+	z-index:10414;
+}
+.ap pre{
+	display:inline;
+}
+.reset {
+  a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, dd, del, dl, dfn, div, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, span, q, s, samp, small, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, ul, var {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+  }
+  address, ar, caption, cite, code, dfn, em, strong, th, v {
+    font-style: normal;
+    font-weight: normal;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    font-size: 100%;
+  }
+  blockquote {
+    &:after, &:before {
+      content: '';
+    }
+  }
+  q {
+    &:after, &:before {
+      content: '';
+    }
+  }
+  caption, th, td {
+    font-weight: normal;
+    text-align: left;
+  }
+  .reset fieldset, img, abbr, acronym {
+    border: 0;
+  }
+  ol, ul {
+    list-style: none;
+  }
+  body {
+    line-height: 1;
+    background: #ffffff;
+    color: #000000;
+  }
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  &:focus {
+    outline: 0;
+  }
+}
+.btn.disabled[href]{
+  cursor: pointer;
+}

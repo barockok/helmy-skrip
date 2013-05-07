@@ -1,0 +1,148 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require bootstrap_overide
+ *= require font-awesome.min
+ *= require_self
+ */
+@import 'misc/mixins';
+body{
+	background-image : url(/assets/bg_base.jpg);
+	background-size: cover;
+	background-attachment:fixed;
+	> #footer {
+		// background : #000;
+		margin-top: 10px;
+		color: #000;
+		.inner {
+			padding: 10px;			
+		}
+	}
+}
+#topest-bar{
+
+	ul.nav{
+		li a {
+			font-weight: bold;
+		}
+		li.active a {
+			color: #058140;
+
+		}
+	}
+}
+.empty-after-topbar{
+	height:40px;
+}
+.page-heading{
+	// min-height: 70px;
+}
+.component-heading{
+	color: #058140;
+	border-bottom: 2px solid #000d06;
+	margin-bottom:20px;
+	display:block;
+	position:relative;
+	z-index: 1;
+	&:after {
+		display: block;
+		content: '';
+		width: 100%;
+		margin-top:3px; 
+		border-bottom: 1px solid #058140;
+		background: red;
+		position: absolute;
+		z-index: -1;
+	}
+}
+#sidebar {
+	> .inner {
+		padding-left: 20px;
+		border-right : 1px solid #d6d6d6;
+		min-height: 400px;
+	}
+}
+.dont-screen {
+	display:none !important;	
+}
+table {
+	&.table{
+		&.no-head {
+			tr:first-child td , tr:first-child th{
+				border:none;
+			}
+		}
+	}
+}
+hr{
+	&.bottom-off {
+		margin-bottom:0px;
+	}
+	&.top-off{
+		margin-top:0px;
+	}
+	&.both-off{
+		margin: 0px;
+	}
+}
+ body {
+ 	> #topest-bar{
+		@include box-shadow(0px 1px 10px transparentize(#000, .5));
+ 	}
+ 	.root-container{
+ 		// background: #fff url('/assets/container-bg.png') bottom left no-repeat;
+ 		// @include border-bottom-left-radius(5px);
+ 		// @include border-bottom-right-radius(5px);
+ 		// @include box-shadow(0px 1px 10px #000);
+ 		// border: 1px solid #ccc;
+
+ 		// padding-bottom:60px;
+ 		> .inner {
+ 			padding:10px 30px 50px;
+ 			background: transparentize(#fff, .1);
+	 		min-height: 500px;
+ 		}
+ 	}
+ }
+.center-text {
+	text-align: center;
+}
+.right-text {
+	text-align: right;
+}
+.no-bold {
+	font-weight: normal;
+}
+.logo-brand{
+	height: 36px;
+	float: left;
+	display: block;
+	margin-right: 10px;
+	position:relative;
+	padding: 2px;
+	&:after, &:before {
+		content: "";
+		display: block;
+		width: 100%;
+		position:absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+
+	&:after {
+		border-radius: 50%;
+		@include box-shadow(inset 0 3px 8px rgba(0, 0, 0, 0.125));
+	}
+	img {
+		height: 38px;
+	}
+}

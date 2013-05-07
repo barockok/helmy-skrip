@@ -1,0 +1,8 @@
+@import 'bootstrap/mixins';
+@mixin width-setter($width: 1170px){
+	@media (min-width: 1200px){
+		.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+		width: $width;
+		}
+	}
+}

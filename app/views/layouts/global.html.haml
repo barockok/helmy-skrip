@@ -1,0 +1,48 @@
+!!! HTML
+%html
+	%head
+		%title Bank Syariah - AT-Taqwa
+		=yield :head_start
+		%meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+		=stylesheet_link_tag :application, :media => :all
+		=stylesheet_link_tag :print, :media => (params[:print_view] == '1' ? :all : :print)
+
+		=csrf_meta_tags
+		=yield :head_end
+	%body{:class => "#{params[:controller].gsub(/\W/, '-')} #{params[:action]}"}
+		- if !block_off?(:top_bar) or content_for?(:top_bar)
+			=render "front_navigation"
+			.container.empty-after-topbar
+		- elsif 
+			=yield :top_bar
+
+
+		.container.page-heading
+			=yield(:heading_page)
+		.container.root-container
+			.inner
+				.row-fluid
+					/ -unless block_off?(:sidebar)
+					/ 	.span4#sidebar
+					/ 		.inner
+					/ 			=yield :sidebar					
+					#component-main.span12
+						-if alert or flash[:alert]
+							.alert.alert-warning
+								=alert
+						-if notice
+							.alert.alert-info
+								=notice
+						-if flash[:error]
+							.alert.alert-danger
+								=flash[:error]
+						
+						=yield
+		.container#footer
+			.inner
+				.copyright
+					%small &copy; #{Time.now.year} Bank Syariah AT-Taqwa
+		.bottom-js{:style => 'display:none'}
+			=javascript_include_tag :application
+			=yield :bottom_js
+

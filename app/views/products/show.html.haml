@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @product.name
+%p
+  %b First credit:
+  = @product.first_credit
+%p
+  %b Month credit:
+  = @product.month_credit
+%p
+  %b Description:
+  = @product.description
+%p
+  %b Months period:
+  = @product.months_period
+%p
+  %b Version:
+  = @product.version
+%p
+  %b Produk code:
+  = @product.code
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path

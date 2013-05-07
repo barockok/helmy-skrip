@@ -2,6 +2,11 @@
 
 # Your secret key for verifying the integrity of signed cookies.
 # If you change this key, all old signed cookies will become invalid!
+
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Fayad::Application.config.secret_token = '801e24f624fd45e530fba3b40e38bcaa5651d3b64a1d2e77b5c32f58d5c11c92ba82f341745dd0e404d63db97bfec7e00422713deaac86962fd40beab03f24f7'
+# You can use `rake secret` to generate a secure secret key.
+
+# Make sure your secret_key_base is kept private
+# if you're sharing your code publicly.
+HelmySkrip::Application.config.secret_key_base = '709c618e7d39caf03e40682a26f0a471f49cc6505f6261074a2030e2fa96ff4080a859626b7d585bf173a49396c086c5d471ea7c93427508463279242f8d9366'

@@ -1,7 +1,5 @@
-# Load the rails application
+# Load the rails application.
 require File.expand_path('../application', __FILE__)
 
-ActiveSupport::Deprecation.silenced = true 
-
-# Initialize the rails application
-Fayad::Application.initialize!
+# Initialize the rails application.
+HelmySkrip::Application.initialize!

@@ -25,7 +25,7 @@ class Transaction < ActiveRecord::Base
 			errors.add(:user_id, "already completed product months period")
 		else
 			errors.add(:credit, "amount must be greater than #{product.month_credit} or it's multiple ") if \
-			self.credit < product.month_credit or (self.credit%product.month_credit) > 0
+			self.credit < product.month_credit and (@holder_attr['credit'].to_i%product.month_credit) > 0
 		end
 	end
 

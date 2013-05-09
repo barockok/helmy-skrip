@@ -41,7 +41,7 @@ class NasabahsController < InternalController
   # PATCH/PUT /nasabahs/1.json
   def update
     respond_to do |format|
-      if @nasabah.update(nasabah_params)
+      if @nasabah.update_attributes(nasabah_params)
         format.html { redirect_to @nasabah, notice: 'Nasabah was successfully updated.' }
         format.json { head :no_content }
       else
@@ -62,7 +62,7 @@ class NasabahsController < InternalController
   end
 
   def approve
-    @nasabah.update_attribute(:approved, true)
+    @nasabah.update_attribute(:approved, params[:approve].blank? ? 'yes' :  'no' ) if params[:approve].blank? or params[:approve] == 'no'
     respond_to do |format|
       format.html { redirect_to nasabahs_url }
       format.json { head :no_content }

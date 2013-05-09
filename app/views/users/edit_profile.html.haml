@@ -1,0 +1,19 @@
+-block_off(:sidebar)
+.center-text
+	%small Update Profile 
+	%h3.no-bold
+		%i.icon.icon-edit
+			=@user.name.titleize
+		%hr
+
+.row-fluid
+	.span6.offset3
+		=form_for(@user, :url => profile_path) do |f|
+			=f.label :email
+			=f.email_field :email, :class => 'span12'
+			=f.label :name
+			=f.text_field :name, :class => 'span12'
+
+			.form-actions.center-text
+				=f.button '<i class="icon icon-ok"></i> Save'.html_safe, :class => 'btn btn-primary'
+				=link_to '<i class="icon icon-arrow-left"></i> Back'.html_safe, profile_path, :class => 'btn'

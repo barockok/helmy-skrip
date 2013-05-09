@@ -1,25 +1,19 @@
 = form_for @transaction do |f|
   - if @transaction.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@transaction.errors.count, "error")} prohibited this transaction from being saved:"
+    #error_explanation.alert.alert-danger
+      %p= "#{pluralize(@transaction.errors.count, "error")} prohibited this transaction from being saved:"
       %ul
         - @transaction.errors.full_messages.each do |msg|
           %li= msg
+  .form-horizontal
+    .control-group
+      = f.label :nasabah_id, 'No Rekening', :class => 'control-label'
+      .controls
+        = f.text_field :nasabah_id
+    .control-group
+      = f.label :credit, :class => 'control-label'
+      .controls
+        = f.text_field :credit
+  .form-actions
+    = f.submit 'Save', :class => 'btn btn-primary'
 
-  .field
-    = f.label :nasabah_id
-    = f.number_field :nasabah_id
-  .field
-    = f.label :debit
-    = f.number_field :debit
-  .field
-    = f.label :credit
-    = f.number_field :credit
-  .field
-    = f.label :description
-    = f.text_field :description
-  .field
-    = f.label :product_id
-    = f.number_field :product_id
-  .actions
-    = f.submit 'Save'

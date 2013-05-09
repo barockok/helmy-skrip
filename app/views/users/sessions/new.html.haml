@@ -1,31 +1,71 @@
+=content_for(:heading_page) do
+	.row-fluid.branding
+		.span.icon-brand-login
+			=image_tag('icon_brand.png')
+		.span.text-brand-login
+			%h1
+				%small Bank Syariah
+				AT-TAQWA
+#login-form
+	.center-text
+		%h2.no-bold Sign in
+		%hr
+		= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+			=f.email_field :email, :autofocus => true, :class => 'span12', :placeholder => 'username or email'
+			.row-fluid
+				.span8
+					=f.password_field :password, :class => 'span12'
+				.span4
+					=f.button '<i class="icon icon-signin"></i> Sign in'.html_safe, :class => 'btn btn-primary btn-block'
+		%hr.top-off
+		%p=link_to "Forgot your password?", new_password_path(resource_name)
+=content_for :bottom_js do
 
-/ <h2>Sign in</h2>
+	:javascript
+		$(document).ready(function(){
+			var div = document.createElement("div");
+			div.id = "wrapper";
+			// Move the body's children into this wrapper
+			while (document.body.firstChild)
+			{
+				div.appendChild(document.body.firstChild);
+			}
+			// Append the wrapper to the body
+			document.body.appendChild(div);
+			$('.icon-brand-login, .root-container , .text-brand-login, .copyright').css({visibility : 'hidden', opacity : 0})
+			$('#wrapper').css({height : window.innerHeight, opacity: 0}).transition({backgroundImage: 'radial-gradient(50% 50%, transparent 20%, transparent 30%, rgba(0, 0, 0, 0.6) 100%)', opacity : 1}, 2000, function(){
+				$('.icon-brand-login').css({
+					marginLeft : '190px',
+					visibility : 'visible',
+					// paddingTop : '220px'
+					}).transition({opacity : 1}, function(){
+						// $('.icon-brand-login').transition({paddingTop:'0px', delay : 2000}, 1000, 'linear', function(){
+							$('.icon-brand-login').transition({marginLeft : '80px'}, 3000 ,'snap', function(){
+							})
+							$('.text-brand-login').css({visibility : 'visible',  marginLeft : '-50px'}).transition({opacity : 1,  marginLeft : '0px'}, 3000 , 'snap', function(){
+								
+								})
+							$('.root-container').transition({delay : 1500}, function(){
+								$('.root-container').css({visibility : 'visible', opacity : 1}).addClass('animated flipInX')	
+								})
+						// })
+					})
+			// 	$('.root-container').transition({
+			// 		marginTop : '0px',
+			// 		opacity : .5
+			// 		}, 1500, 'snap').transition({
+			// 			opacity : 1
+			// 			}, 500)
+			// 	$('.logo').transition({
+			// 		opacity: 1,
+			// 		delay : 1000
+			// 	}, 3000)
+			// 	$('.titling h3').css({textIndent : '200px'})
+			// 	.transition({textIndent : '0px', opacity : 1, delay : 1000}, 2000, 'snap')
+			// 	$('.titling small').css({textIndent : '-80px'})
+			// 	.transition({textIndent : '0px', opacity : 1, delay : 1000}, 2000, 'snap', function(){
+			// 		$('.copyright').transition({opacity : 1})
+			// 		})
+			})
 
-/ <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-/   <div><%= f.label :email %><br />
-/   <%= f.email_field :email, :autofocus => true %></div>
-
-/   <div><%= f.label :password %><br />
-/   <%= f.password_field :password %></div>
-
-/   <% if devise_mapping.rememberable? -%>
-/     <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-/   <% end -%>
-
-/   <div><%= f.submit "Sign in" %></div>
-/ <% end %>
-
-/ <%= render "users/shared/links" %>
-
-.center-text
-	%h2.no-bold Sign in
-	%hr
-	= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-		=f.email_field :email, :autofocus => true, :class => 'span12', :placeholder => 'username or email'
-		.row-fluid
-			.span8
-				=f.password_field :password, :class => 'span12'
-			.span4
-				=f.button '<i class="icon icon-signin"></i> Sign in'.html_safe, :class => 'btn btn-primary btn-block'
-	%hr.top-off
-	%p=link_to "Forgot your password?", new_password_path(resource_name)
+		})

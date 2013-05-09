@@ -1,0 +1,11 @@
+-block_off(:sidebar)
+.center-text
+	%small Update Profile 
+	%h3.no-bold
+		%i.icon.icon-edit
+			=@user.name
+		%hr
+
+.row-fluid
+	.span8.offset2
+		=render 'form'

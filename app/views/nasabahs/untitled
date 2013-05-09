@@ -1,0 +1,8 @@
+				.btn-toolbar
+					.btn-group
+						= link_to '<i class="icon icon-pencil"></i> Edit'.html_safe, edit_nasabah_path(@nasabah), :class => 'btn btn-mini'
+						= link_to '<i class="icon icon-arrow-left"></i> Back'.html_safe, nasabahs_path, :class => 'btn btn-mini'
+					-if @nasabah.unreviewed?				
+						.btn-group
+							= link_to '<i class="icon icon-ok-sign"></i> Approve'.html_safe, approve_nasabah_path(@nasabah), :class => 'btn btn-mini btn-success', :title => 'Approve', :method => :put
+							= link_to '<i class="icon icon-ok-sign"></i> Disapprove'.html_safe, approve_nasabah_path(@nasabah, :approve => 'no'), :class => 'btn btn-mini btn-danger btn-danger', :title => 'Approve', :method => :put

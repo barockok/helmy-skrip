@@ -17,9 +17,16 @@ class Nasabah < ActiveRecord::Base
 	def saldo
 		transactions.sum(:credit)
 	end
-	def approved?
-		true
+	def reviewed?
+		['yes', 'no'].include?(self.approved)
 	end
+	def unreviewed?
+		reviewed? == false
+	end
+	def approved?
+		self.approved == 'yes'
+	end
+
 	def completeness_product
 		@completeness_product ||= {
 			:percent => '%.2f' % ((product_credit_counter*100).to_f/product.months_period.to_f) , 

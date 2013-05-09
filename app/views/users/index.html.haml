@@ -1,0 +1,28 @@
+.component-heading
+	.row-fluid
+		.span8
+			%h3.no-bold
+				%i.icon.icon-barcode
+				Administrator User
+		.span4
+			.pull-right
+				= link_to 'New user', new_user_path, :class => 'btn'
+%table.table.table-condensed.table-stripped
+	%thead
+		%tr
+			%th Name
+			%th Email
+			%th Roles
+			%th Action
+	%tbody
+		-for user in @users
+			%tr
+				%td=user.name
+				%td=user.email
+				%td
+					-for role in user.roles
+						%small.badge.badge-success=role.titleize
+				%td
+					.btn-group
+						= link_to '<i class="icon icon-pencil"></i>'.html_safe, edit_user_path(user), :class => 'btn btn-mini btn-primary', :title => 'Edit'
+						= link_to '<i class="icon icon-remove"></i>'.html_safe, user, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger', :title => 'Destroy'

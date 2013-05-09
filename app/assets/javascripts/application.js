@@ -11,10 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require bootstrap
-//= require chosen.jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require bootstrap-datetimepicker.min
+//= require transit
+//= require chosen.jquery
 //= require_self
 $(document).ready(function(){
 	$('select').chosen();

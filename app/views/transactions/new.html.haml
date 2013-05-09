@@ -1,5 +1,12 @@
-%h1 New transaction
-
-= render 'form'
-
-= link_to 'Back', transactions_path
+.component-heading
+	.row-fluid
+		.span8
+			%h3.no-bold
+				%i.icon.icon-exchange
+				New Transaction
+		.span4
+			.pull-right
+				= link_to 'Back', transactions_path, :class => 'btn'
+.row-fluid
+	.span8.offset2
+		=render 'form'

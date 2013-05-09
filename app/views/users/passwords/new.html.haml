@@ -16,7 +16,7 @@
 =form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
 	.row-fluid
 		.span8
-			=f.email_field :password, :class => 'span12'
+			=f.email_field :email, :class => 'span12'
 		.span4
 			=f.button '<i class="icon icon-signin"></i> Submit'.html_safe, :class => 'btn btn-primary btn-block'	
 	%small System will send you email with link for resetting your password.

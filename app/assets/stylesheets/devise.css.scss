@@ -2,16 +2,42 @@ body{
 	.container {
 		width: 450px;
 	}
-	.root-container{
-		// margin
-		border: 15px solid transparentize(#fff, 0.4);
-		border-radius: 7.5px;
+	.root-container {
+
 		> .inner {
 	 		min-height: 0px;
+			border: 15px solid transparentize(#fff, 0.4);
+			border-radius: 5px;
+			// background: none;
+			// padding:0px;
+		}
+
+	}
+	// #login-form{
+	// 	// margin
+	// 	background: #fff;
+	// 	padding: 10px 30px 50px;
+
+	// 	border-radius: 7.5px;
+	// }
+	.page-heading {
+		padding-top: 80px;
+		.branding{
+			margin-bottom: 20px;
+			.text-brand-login {
+				color: #fff;
+				small {
+					display: block;
+					font-size: 50%;
+					color: #fff;
+				}
+				width: 220px;
+			}			
+			.icon-brand-login{
+				width : 80px;
+				margin-left: 70px;
+			}
 		}
 	}
-	.page-heading {
-		margin-top: 40px;
-	}
-	
+
 }

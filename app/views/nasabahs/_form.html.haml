@@ -1,4 +1,4 @@
-= form_for @nasabah do |f|
+= form_for @nasabah , :html => {autocomplete: "off"} do |f|
 	- if @nasabah.errors.any?
 		#error_explanation
 			%h2= "#{pluralize(@nasabah.errors.count, "error")} prohibited this nasabah from being saved:"

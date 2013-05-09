@@ -1,0 +1,28 @@
+.component-heading
+	.row-fluid
+		.span8
+			%h3.no-bold
+				%i.icon.icon-money
+				Administration Fee
+
+=render 'internal/filter'
+%table.table.table-condensed.table-stripped
+	%thead
+		%tr
+			%th #
+			%th Tanggal
+			%th amount
+			%th description
+
+	%tbody
+		- @administration_fees.each do |administration_fee|
+			%tr
+				%td="##{administration_fee.id}"
+				%td= administration_fee.created_at.strftime('%d/%m/%y %I:%M %p')
+				%td= money_formater administration_fee.amount
+				%td= administration_fee.description
+.pagination
+	= will_paginate @administration_fees
+	.page_info
+		= page_entries_info @administration_fees
+

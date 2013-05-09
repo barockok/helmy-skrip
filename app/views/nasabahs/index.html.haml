@@ -8,7 +8,7 @@
 			.pull-right
 				=link_to '<i class="icon icon-plus-sign"></i> Nasabah Baru'.html_safe, new_nasabah_path, :class => 'btn btn-primary'
 
-
+=render 'filter'
 %table.table.table-condensed.table-stripped
 	%tr
 		%th Nama
@@ -43,5 +43,10 @@
 						.btn-group
 							= link_to '<i class="icon icon-ok-sign"></i> Approve'.html_safe, approve_nasabah_path(nasabah), :class => 'btn btn-mini btn-success', :title => 'Approve', :method => :put
 							= link_to '<i class="icon icon-ban-circle"></i> Disapprove'.html_safe, approve_nasabah_path(nasabah, :approve => 'no'), :class => 'btn btn-mini btn-danger btn-danger', :title => 'Approve', :method => :put
+.pagination
+	= will_paginate @nasabahs
+	.page_info
+		= page_entries_info @nasabahs
+
 				
 

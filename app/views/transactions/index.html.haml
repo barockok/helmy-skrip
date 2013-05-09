@@ -8,6 +8,15 @@
 			.pull-right
 				= link_to 'New Transaction', new_transaction_path, :class => 'btn'
 
+=render 'internal/filter'
+=content_for(:bottom_js) do 
+	:javascript						
+		$(function() {
+			$('.bt-timepick').datetimepicker({
+				pickTime: false
+			});
+		})					
+
 %table.table.table-condensed.table-stripped
 	%thead
 		%tr
@@ -34,4 +43,8 @@
 						= link_to '<i class="icon icon-eye-open"></i>'.html_safe, transaction, :class => 'btn btn-mini btn-primary', :title => 'View'
 						= link_to '<i class="icon icon-pencil"></i>'.html_safe, edit_transaction_path(transaction), :class => 'btn btn-mini btn-info', :title => 'Edit'
 						= link_to '<i class="icon icon-remove"></i>'.html_safe, transaction, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger', :title => 'Destroy'
+.pagination
+	= will_paginate @transactions
+	.page_info
+		= page_entries_info @transactions
 

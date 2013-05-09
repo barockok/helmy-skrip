@@ -7,25 +7,30 @@ class Transaction < ActiveRecord::Base
 	validates_presence_of :product_id , :if => 'nasabah and nasabah.approved?'
 	validates_presence_of :credit, :debit, :description , :if => 'product'
 
-	validate :validate_credit_amount_by_product, :if => 'product and nasabah'
+	validate :validate_credit_amount_by_product, :if => 'product'
 	validate :validate_nasabah_approval, :unless => 'nasabah.blank?'
 
 
 	after_initialize :define_stuff_by_product, :on => :create, :if => 'new_record?'
 	after_create :create_multiple_item
 
+	act_as_date_filter
+	
 	def validate_nasabah_approval
 		errors.add(:nasabah_id, 'Pengajuan aplikasi belum disetujui') unless nasabah.approved?
 	end
 	
 	def validate_credit_amount_by_product
 		#check product finish months_period already
+		puts "asuhhhhh"
 		completeness = nasabah.transactions.where(:product_id => self.product_id).count == product.months_period
 		if completeness
 			errors.add(:user_id, "already completed product months period")
 		else
-			errors.add(:credit, "amount must be greater than #{product.month_credit} or it's multiple ") if \
-			self.credit < product.month_credit and (@holder_attr['credit'].to_i%product.month_credit) > 0
+
+			errors.add(:credit, "amount must bea equal to #{product.month_credit} or it's multiple ") if \
+			@holder_attr['credit'].to_i < product.month_credit or (@holder_attr['credit'].to_i > product.month_credit and @holder_attr['credit'].to_i%product.month_credit != 0)
+			
 		end
 	end
 

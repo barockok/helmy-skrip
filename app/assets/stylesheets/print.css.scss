@@ -38,6 +38,11 @@ body{
 .btn {
 	display:none;
 }
+
+.btn.disabled{
+	disabled:inline-block;
+}
+
 * {
   -webkit-print-color-adjust: exact;
 }

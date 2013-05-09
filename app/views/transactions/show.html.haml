@@ -1,21 +1,46 @@
-%p#notice= notice
+%br
+.row-fluid
+  .span7
+    %h3.no-bold
+      %i.icon.icon-exchange
+      Transactions #{@transaction.id}
 
-%p
-  %b Nasabah:
-  = @transaction.nasabah_id
-%p
-  %b Debit:
-  = @transaction.debit
-%p
-  %b Credit:
-  = @transaction.credit
-%p
-  %b Description:
-  = @transaction.description
-%p
-  %b Product:
-  = @transaction.product_id
+    %table.table
+      %tbody
+        %tr
+          %td.span4
+            %b Jenis Rekening
+          %td.span8
+            %b #{@transaction.product.name_version}
+        / %tr
+        /   %td{:colspan => 2}
+        /     %p
+        %tr
+          %td.span4
+            No. Rekening Nasabah 
+          %td.span8
+            #{@transaction.nasabah.account_number}
+        %tr
+          %td
+            Nama Pemilik rekening
+          %td
+            #{@transaction.nasabah.nama_lengkap.titleize}
+        %tr
+          %td
+            Berita / Keterangan
+          %td
+            #{@transaction.description}
 
-= link_to 'Edit', edit_transaction_path(@transaction)
-\|
-= link_to 'Back', transactions_path
+  .span5
+    %br
+    %div.right-text
+      %i.icon.icon-calendar
+      Tanggal : #{@transaction.created_at.strftime("%-d %B, %Y")}
+    %hr.bottom-off
+    %small Jumlah Setoran :
+    %h3{:style => 'margin : 0px; '}
+      %b=money_formater @transaction.credit
+    %hr.both-off
+    %small Terbilang :
+    %h4.no-bold{:style => 'margin : 0px; '}
+      %i Dua ratus ribu rupiah

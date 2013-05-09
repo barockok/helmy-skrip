@@ -1,0 +1,52 @@
+.row-fluid
+	.span4
+		%p
+			%i.icon.icon-calendar
+			=@filter_params[:from].to_date.strftime("%-d %B, %Y")
+			%i.icon.icon-double-angle-right
+			=@filter_params[:to].to_date.strftime("%-d %B, %Y")
+	.span8
+		.pull-right
+			.btn-group
+				-time = Time.now
+				%a.btn.btn-mini.btn-info{:href => url_for(:filter => {:from => time.beginning_of_day.strftime("%-d %B, %Y") , :to => time.end_of_day.strftime("%-d %B, %Y") })} Daily
+				%a.btn.btn-mini.btn-info{:href => url_for(:filter => {:from => time.beginning_of_week.strftime("%-d %B, %Y") , :to => time.end_of_week.strftime("%-d %B, %Y") })} Weekly
+				%a.btn.btn-mini.btn-info{:href => url_for(:filter => {:from => time.beginning_of_month.strftime("%-d %B, %Y") , :to => time.end_of_month.strftime("%-d %B, %Y") })} Monthly												
+				%span#show-filter.btn.btn-mini.btn-primary{:role =>"button", :data => {:toggle => 'modal', :target => '#filter-modal', :backdrop => 'false'}}
+					%i.icon.icon-filter
+					Adnvance Filter
+				-if params[:filter]
+					=link_to '<i class="icon icon-remove-sign"></i> Reset Filter'.html_safe, url_for(:action => :index), :class => 'btn btn-mini btn-warning'
+- filter_params = params[:filter] || {}
+.modal.hide.fade#filter-modal{:role => 'dialog'}
+	.modal-header
+		%button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+		%h3.no-bold
+			%i.icon.icon-filter		
+			Filter Transaction
+	%form{:action => url_for(:action => :index), :style => 'margin-bottom : 0px;'}
+		.modal-body
+			.row-fluid
+				.span6
+					%label Mulai Tanggal
+					.bt-timepick.input-append
+						%input.pickadate_target.span12{:type => :text, :name => 'filter[from]',  :value => filter_params[:to], :data => {:format => 'yyyy-MM-dd'}}					
+						%span.add-on
+							%i.icon.icon-calendar
+				.span6
+					%label Sampai Tanggal
+					.bt-timepick.input-append
+						%input.pickadate_target.span12{:type => :text, :name => 'filter[to]',  :value => filter_params[:to], :data => {:format => 'yyyy-MM-dd'}}					
+						%span.add-on
+							%i.icon.icon-calendar
+
+
+		.modal-footer
+			%button.btn Search	
+=content_for(:bottom_js) do 
+	:javascript						
+		$(function() {
+			$('.bt-timepick').datetimepicker({
+				pickTime: false
+			});
+		})	

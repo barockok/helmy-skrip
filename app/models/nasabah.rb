@@ -8,8 +8,29 @@ class Nasabah < ActiveRecord::Base
 	belongs_to :product
 
 	validates_presence_of :nama_lengkap, :product_id 
+	after_create :add_admin_fee
+	around_update :check_approval
+	act_as_date_filter
+	def add_admin_fee
+		AdministrationFee.create(:description => "Biaya Applikasi Nasabah baru No.rek #{self.account_number}", :amount => 50000)
+	end
+	def check_approval
+		before = Nasabah.find(self.id).approved?
+		yield
+		after = Nasabah.find(self.id).approved?
+		if before == false and after == true
+			after_approve
+		end
+	end
+	
+	def after_approve
+		add_first_product_credit
+	end
 
-
+	def add_first_product_credit
+		Transaction.create(:nasabah_id => self.id, :credit => self.product.month_credit)
+	end
+	
 	def account_number
 		num =  "%010d" % self.id
 		num.split(//).each_slice(3).to_a.map{|r| r.join('')}.join('-')

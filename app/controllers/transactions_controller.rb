@@ -4,7 +4,8 @@ class TransactionsController < InternalController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+
+    @transactions = Transaction.filterize(filter_params).paginate(paginate_options) 
   end
 
   # GET /transactions/1
@@ -60,6 +61,7 @@ class TransactionsController < InternalController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -20,7 +20,7 @@ group :production do
   gem 'activerecord-postgresql-adapter'
   gem 'pg'
 end
-
+gem 'will_paginate', '~> 3.0'
 gem "auto_build"
 gem 'uglifier', '>= 1.0.3'
 gem 'bootstrap-sass', '~> 2.3.1.0'

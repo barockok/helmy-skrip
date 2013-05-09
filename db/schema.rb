@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508174501) do
+ActiveRecord::Schema.define(:version => 20130509183926) do
+
+  create_table "administration_fees", :force => true do |t|
+    t.string   "description"
+    t.integer  "amount"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "configuration_items", :force => true do |t|
+    t.string   "key_name"
+    t.string   "the_value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "nasabahs", :force => true do |t|
     t.string   "nama_lengkap"

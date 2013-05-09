@@ -1,3 +1,4 @@
+@import 'misc/mixins';
 body{
 	.container {
 		width: 450px;
@@ -6,9 +7,16 @@ body{
 
 		> .inner {
 	 		min-height: 0px;
-			border: 15px solid transparentize(#fff, 0.4);
+			border: 2px solid #fff;
 			border-radius: 5px;
-			// background: none;
+			background: #ffffff; /* Old browsers */
+			background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* IE10+ */
+			background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */			// background: none;
 			// padding:0px;
 		}
 
@@ -34,6 +42,14 @@ body{
 				width: 220px;
 			}			
 			.icon-brand-login{
+				.icon {
+			 		width: 76px;
+			 		height: 76px;
+			 		// @include box-shadow(0px 1px 10px #f2dd1c);
+			 		@include border-radius(50%);
+			 		background-image: url(/assets/icon_brand.png);
+			 		background-position:center center;
+				}
 				width : 80px;
 				margin-left: 70px;
 			}

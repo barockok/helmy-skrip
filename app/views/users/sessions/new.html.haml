@@ -1,7 +1,7 @@
 =content_for(:heading_page) do
 	.row-fluid.branding
 		.span.icon-brand-login
-			=image_tag('icon_brand.png')
+			.icon
 		.span.text-brand-login
 			%h1
 				%small Bank Syariah
@@ -39,16 +39,15 @@
 					visibility : 'visible',
 					// paddingTop : '220px'
 					}).transition({opacity : 1}, function(){
-						// $('.icon-brand-login').transition({paddingTop:'0px', delay : 2000}, 1000, 'linear', function(){
-							$('.icon-brand-login').transition({marginLeft : '80px'}, 3000 ,'snap', function(){
-							})
-							$('.text-brand-login').css({visibility : 'visible',  marginLeft : '-50px'}).transition({opacity : 1,  marginLeft : '0px'}, 3000 , 'snap', function(){
+						$('.icon-brand-login .icon').transition({'-webkitBoxShadow' : '0px 0px 30px #f2dd1c'}, 2000, 'linear', function(){
+							$('.icon-brand-login').transition({marginLeft : '80px', delay : 1000}, 3000 ,'snap', function(){})
+							$('.text-brand-login').css({visibility : 'visible',  marginLeft : '-50px'}).transition({opacity : 1,  marginLeft : '0px',delay : 1000}, 3000 , 'snap', function(){
 								
 								})
-							$('.root-container').transition({delay : 1500}, function(){
+							$('.root-container').transition({delay : 2500}, function(){
 								$('.root-container').css({visibility : 'visible', opacity : 1}).addClass('animated flipInX')	
 								})
-						// })
+						})
 					})
 			// 	$('.root-container').transition({
 			// 		marginTop : '0px',

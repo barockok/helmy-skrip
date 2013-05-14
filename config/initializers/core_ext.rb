@@ -8,14 +8,14 @@ module AtTaqwaARExt
         try{|ar|
         (params[:from].blank? == false and params[:to].blank? == false ) == true ? ar.where(:created_at => (params[:from].to_time(:local).beginning_of_day)..(params[:to].to_time(:local).end_of_day) ) : ar
 
-          }.order('created_at DESC')
+          }
       }      
     end
     def act_as_group_by_date
       scope :group_by_date, ->{
         adptr = ActiveRecord::Base.connection.adapter_name
         if adptr =~ /postgresql/i
-          group("DATE_TRUNC('day', #{self.table_name}.created_at) as date_trunc_day_#{self.table_name}_created_at").order("created_at asc")
+          group("DATE_TRUNC('day', #{self.table_name}.created_at)").order("date_trunc_day_#{self.table_name}_created_at asc")
         else
           group("date(#{self.table_name}.created_at)").order("created_at asc")
         end

@@ -5,7 +5,6 @@ class NasabahsController < InternalController
   # GET /nasabahs.json
   def index
     @nasabahs = Nasabah.filterize(filter_params).paginate(paginate_options) 
-
   end
 
   # GET /nasabahs/1

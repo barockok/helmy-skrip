@@ -6,7 +6,7 @@
 		%meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0" }
 		=stylesheet_link_tag :application, :media => :all
 		=stylesheet_link_tag :print, :media => (params[:print_view] == '1' ? :all : :print)
-
+		%link{rel: 'icon' , href: asset_path('icon_brand.png'), type: "image/png"}
 		=csrf_meta_tags
 		=yield :head_end
 	%body{:class => "#{params[:controller].gsub(/\W/, '-')} #{params[:action]}"}

@@ -15,6 +15,7 @@ class Transaction < ActiveRecord::Base
 	after_create :create_multiple_item
 
 	act_as_date_filter
+	act_as_group_by_date
 	
 	def validate_nasabah_approval
 		errors.add(:nasabah_id, 'Pengajuan aplikasi belum disetujui') unless nasabah.approved?
@@ -56,5 +57,18 @@ class Transaction < ActiveRecord::Base
 		self.credit = product.month_credit if self.product
 	end
 
+	def self.rickshaw(params)
+		q = Transaction
+			.filterize(params)
+			.group_by_date.sum(:credit)
+		res = []
+		q.each{|k, v|
+			res << {:x => k.to_time(:local).to_js_timestamp, :y => v}
+		}
+		# 30.times do |d|
+		# 	res << {:x => (Time.now-d.day).to_i , :y => rand(56889..7876879) }
+		# end
+		res.sort_by {|k| k[:x] }
+	end
 
 end

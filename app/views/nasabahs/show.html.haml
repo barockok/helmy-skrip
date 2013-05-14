@@ -12,6 +12,7 @@
 
 						= link_to '<i class="icon icon-pencil"></i> Edit'.html_safe, edit_nasabah_path(@nasabah), :class => 'btn btn-small'
 						= link_to '<i class="icon icon-arrow-left"></i> Back'.html_safe, nasabahs_path, :class => 'btn btn-small'
+						= link_to '<i class="icon icon-print"></i> Print'.html_safe, '#', :class => 'btn btn-small', :onclick=> "window.print()"
 					-if @nasabah.unreviewed? and can?(:approve, @nasabah)				
 						.btn-group
 							= link_to '<i class="icon icon-ok-sign"></i> Approve'.html_safe, approve_nasabah_path(@nasabah), :class => 'btn btn-small btn-success', :title => 'Approve', :method => :put

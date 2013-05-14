@@ -11,6 +11,7 @@ class Nasabah < ActiveRecord::Base
 	after_create :add_admin_fee
 	around_update :check_approval
 	act_as_date_filter
+	act_as_group_by_date
 	def add_admin_fee
 		AdministrationFee.create(:description => "Biaya Applikasi Nasabah baru No.rek #{self.account_number}", :amount => 50000)
 	end
@@ -55,5 +56,15 @@ class Nasabah < ActiveRecord::Base
 	end
 	def product_credit_counter
 		@product_credit_counter ||= transactions.where(:product_id => self.product_id).count
+	end
+	def self.rickshaw(params)
+		q = Nasabah
+			.filterize(params)
+			.group_by_date.count
+		res = []
+		q.each{|k, v|
+			res << {:x => k.to_time(:local).to_js_timestamp, :y => v}
+		}
+		res.sort_by {|k| k[:x] }
 	end
 end

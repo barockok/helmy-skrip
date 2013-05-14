@@ -1,4 +1,4 @@
-module DateFilter
+module AtTaqwaARExt
   def self.included(base)
     base.extend ClassMethods
   end
@@ -11,8 +11,23 @@ module DateFilter
           }.order('created_at DESC')
       }      
     end
+    def act_as_group_by_date
+      scope :group_by_date, ->{
+        adptr = ActiveRecord::Base.connection.adapter_name
+        if adptr =~ /postgresql/i
+          group("DATE_TRUNC('day', #{self.table_name}.created_at) as date_trunc_day_#{self.table_name}_created_at").order("created_at asc")
+        else
+          group("date(#{self.table_name}.created_at)").order("created_at asc")
+        end
+      }    
+    end
+  end
+end
+Time.class_eval do
+  def to_js_timestamp
+    (self.to_f*1000).to_i
   end
 end
 ActiveRecord::Base.send(:include, ActiveModel::ForbiddenAttributesProtection)
-ActiveRecord::Base.send(:include, DateFilter)
+ActiveRecord::Base.send(:include, AtTaqwaARExt)
 

@@ -1,0 +1,6 @@
+Transaction #{@filter_params[:from].to_date.strftime("%d/%m/%Y")} - #{@filter_params[:to].to_date.strftime("%-d/%b/%Y")}
+
+
+Nasabah, Tanggal, Debit, Credit, Description, Product
+-for tx in @transactions
+	="#{tx.nasabah.account_number}, #{tx.created_at.strftime('%d/%m/%y %I:%M %p')}, #{tx.debit}, #{tx.credit} , #{tx.description}, #{tx.product.code}"

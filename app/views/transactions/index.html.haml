@@ -6,7 +6,10 @@
 				Transactions
 		.span4
 			.pull-right
-				= link_to 'New Transaction', new_transaction_path, :class => 'btn'
+				.btn-group
+					= link_to 'New Transaction', new_transaction_path, :class => 'btn btn-mini'
+					= link_to '<i class="icon icon-download"></i> Download Excel'.html_safe, url_for(:format => :csv), :class => 'btn btn-mini'
+					= link_to '<i class="icon icon-print"></i> Print'.html_safe, '#', :class => 'btn btn-mini', :onclick=> "window.print()"
 
 =render 'internal/filter'
 =content_for(:bottom_js) do 

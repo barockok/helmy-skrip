@@ -4,8 +4,10 @@ class TransactionsController < InternalController
   # GET /transactions
   # GET /transactions.json
   def index
-
-    @transactions = Transaction.filterize(filter_params).paginate(paginate_options) 
+    respond_to do |format|
+      format.html{ @transactions = Transaction.filterize(filter_params).paginate(paginate_options) }
+      format.csv{ @transactions = Transaction.filterize(filter_params)}
+    end
   end
 
   # GET /transactions/1

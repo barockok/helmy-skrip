@@ -1,0 +1,106 @@
+.center-text{:style => 'position : relative'}
+
+	.wtf{:style => 'position:absolute ; top : 0px; right :0px'}
+		= link_to '<i class="icon icon-print"></i> Print'.html_safe, '#', :class => 'btn btn-mini', :onclick=> "window.print()"
+	%h3.no-bold
+		%i.icon.icon-bar-chart
+		Report
+
+	%hr
+
+.row-fluid
+=render 'filter'
+
+%h4
+	%i.icon.icon-exchange
+	Transaction
+%hr.top-off
+.row-fluid
+	.span1
+		#transactions-y_axis.pull-right
+	.span11
+		#transactions
+.raw-fluid
+	.span6
+		%h5
+			%i.icon.icon-group
+			Pertumbuhan Nasabah
+		%hr.top-off
+		.row-fluid
+			.span12
+				#nasabahs		
+	.span6
+		%h5
+			%i.icon.icon-money
+			Biaya Administrasi
+		%hr.top-off
+		.row-fluid
+			.span12
+				#administration_fees		
+
+=content_for(:bottom_js) do
+	:javascript
+		var transactions = JSON.parse('#{@transactions.to_json}')
+		var nasabahs = JSON.parse('#{@nasabahs.to_json}')
+		var administration_fees = JSON.parse('#{@administration_fees.to_json}')
+		var palette = new Rickshaw.Color.Palette( { scheme: 'spectrum2001' } );
+		var txgraph = new Rickshaw.Graph( {
+						element: document.querySelector("#transactions"),
+						height: 250,
+						padding: {bottom : '10px'},
+						series: [ {
+										color: '#933125',
+										data: transactions,
+										name : 'transaction'
+						} ]
+		} );
+		var y_axis = new Rickshaw.Graph.Axis.Y( {
+						graph: txgraph,
+						orientation: 'left',
+						tickFormat: function(val){return 'Rp '+val},
+						element: document.getElementById('transactions-y_axis'),
+		} );
+		var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+				graph: txgraph,
+				xFormatter: function(x) { return new Date(x)  },
+				yFormatter: function(y) { return "Rp "+ number_format(y) }
+		} );		
+		
+		var axes = new Rickshaw.Graph.Axis.Time( { graph: txgraph } );
+		txgraph.render();
+		var nsgraph = new Rickshaw.Graph( {
+						element: document.querySelector("#nasabahs"),
+						height: 250,
+						padding: {bottom : '10px'},
+						series: [ {
+										color: '#491b65',
+										data: nasabahs,
+										name : 'Nasabah'
+						} ]
+		} );
+		var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+				graph: nsgraph,
+				xFormatter: function(x) { return new Date(x) },
+				yFormatter: function(y) { return y }
+		} );		
+		
+		var axes = new Rickshaw.Graph.Axis.Time( { graph: nsgraph } );
+		nsgraph.render();		
+		var afgraph = new Rickshaw.Graph( {
+						element: document.querySelector("#administration_fees"),
+						height: 250,
+						padding: {bottom : '10px'},
+						series: [ {
+										color: '#287b93',
+										data: administration_fees,
+										name : 'Biaya Administrasi'
+						} ]
+		} );
+		var hoverDetail = new Rickshaw.Graph.HoverDetail( {
+				graph: afgraph,
+				xFormatter: function(x) { return new Date(x) },
+				yFormatter: function(y) { return y }
+		} );		
+		
+		var axes = new Rickshaw.Graph.Axis.Time( { graph: afgraph } );
+		afgraph.render();							

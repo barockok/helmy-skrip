@@ -1,6 +1,6 @@
 HelmySkrip::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => "users/registrations", :passwords => "users/passwords"}, :path => 'membership'
-
+  resources :reports
   resources :transactions
   resources :administration_fees , :only => [:index]
 

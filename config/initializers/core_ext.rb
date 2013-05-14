@@ -19,7 +19,10 @@ module AtTaqwaARExt
         else
           group("date(#{self.table_name}.created_at)").order("created_at asc")
         end
-      }    
+      } 
+      scope :latest , -> {
+        order('created_at DESC')
+      }   
     end
   end
 end

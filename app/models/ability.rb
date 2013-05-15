@@ -18,6 +18,7 @@ class Ability
   def cs
     can :manage, Nasabah
     cannot :approve, Nasabah
+    can :manage , AdministrationFee
   end
 
   def teller

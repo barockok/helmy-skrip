@@ -2,17 +2,19 @@
 	-if can?(:manage, Nasabah)
 		%li{:class => params[:controller] == 'nasabahs' ? 'active' : ''}
 			=link_to '<i class="icon icon-group"></i> Data Nasabah'.html_safe, nasabahs_path
-	-if can?(:manage, Transaction)
+	-if can?(:manage, Transaction) or can?(:manage , AdministrationFee)
 		%li.dropdown{:class => params[:controller] =~ /transactions|administration_fees/ ? 'active' : ''}
 			%a.dropdown-toggle{:href=>"#", 'data-toggle' => "dropdown"}
 				%i.icon.icon-exchange 
 				Transaction
 				%b.caret
 			%ul.dropdown-menu
-				%li
-					=link_to  '<i class="icon icon-th-list"></i> List Transaction'.html_safe, transactions_path
-				%li
-					=link_to  '<i class="icon icon-money"></i> Administration Fee'.html_safe, administration_fees_path
+				-if can?(:manage, Transaction)
+					%li
+						=link_to  '<i class="icon icon-th-list"></i> List Transaction'.html_safe, transactions_path
+				-if can?(:manage , AdministrationFee)
+					%li
+						=link_to  '<i class="icon icon-money"></i> Administration Fee'.html_safe, administration_fees_path
 
 	-if can?(:manage, Product)
 		%li{:class => params[:controller] == 'products' ? 'active' : ''}

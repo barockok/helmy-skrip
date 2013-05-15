@@ -1,0 +1,6 @@
+Nasabah #{@filter_params[:from].to_date.strftime("%d/%m/%Y")} - #{@filter_params[:to].to_date.strftime("%-d/%m/%Y")}
+
+
+Nama, No. Rek, Product, Saldo
+-for ns in @nasabahs
+	="#{ns.nama_lengkap}, #{ns.account_number}, #{ns.product.name_version}, #{ns.saldo}"

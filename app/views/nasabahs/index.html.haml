@@ -6,7 +6,11 @@
 				Data Nasabah
 		.span4
 			.pull-right
-				=link_to '<i class="icon icon-plus-sign"></i> Nasabah Baru'.html_safe, new_nasabah_path, :class => 'btn btn-primary'
+				.btn-group
+					=link_to '<i class="icon icon-plus-sign"></i> Nasabah Baru'.html_safe, new_nasabah_path, :class => 'btn-mini btn btn-primary'
+					= link_to '<i class="icon icon-download"></i> Download Excel'.html_safe, url_for(params.merge(:format => :csv)), :class => 'btn btn-mini'
+					= link_to '<i class="icon icon-print"></i> Print'.html_safe, '#', :class => 'btn btn-mini', :onclick=> "window.print()"
+
 
 =render 'filter'
 %table.table.table-condensed.table-stripped
@@ -17,7 +21,7 @@
 		%th Saldo
 		%th
 			.center-text Product Completeness
-		%th
+		%th.dont-print
 			.center-text Action
 
 	- @nasabahs.each do |nasabah|
@@ -27,7 +31,7 @@
 			%td=nasabah.account_number
 			%td=nasabah.product.name_version
 			%td=money_formater nasabah.saldo
-			%td
+			%td.dont-print
 				.center-text
 					.btn-group
 						%span.btn.btn-mini.btn-success.disabled="#{nasabah.completeness_product[:percent]} %"

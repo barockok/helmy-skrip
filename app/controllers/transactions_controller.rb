@@ -6,7 +6,10 @@ class TransactionsController < InternalController
   def index
     respond_to do |format|
       format.html{ @transactions = Transaction.filterize(filter_params).latest.paginate(paginate_options) }
-      format.csv{ @transactions = Transaction.filterize(filter_params).latest}
+      format.csv do 
+        @transactions = Transaction.filterize(filter_params).latest
+        response.headers['Content-Disposition'] = 'attachment; filename="' + "Transaction #{filter_params[:from].to_date.strftime("%-d %B, %Y")} - #{filter_params[:to].to_date.strftime("%-d %B, %Y")} #{Time.now.to_i}" + '.csv"'
+      end
     end
   end
 

@@ -4,7 +4,13 @@ class NasabahsController < InternalController
   # GET /nasabahs
   # GET /nasabahs.json
   def index
-    @nasabahs = Nasabah.filterize(filter_params).latest.paginate(paginate_options) 
+    respond_to do |format|    
+      format.html{ @nasabahs = Nasabah.filterize(filter_params).latest.paginate(paginate_options)}      
+      format.csv do
+        @nasabahs = Nasabah.filterize(filter_params).latest.latest
+        response.headers['Content-Disposition'] = 'attachment; filename="' + "Nasabah #{filter_params[:from].to_date.strftime("%-d %B, %Y")} - #{filter_params[:to].to_date.strftime("%-d %B, %Y")} #{Time.now.to_i}" + '.csv"'
+      end      
+    end
   end
 
   # GET /nasabahs/1

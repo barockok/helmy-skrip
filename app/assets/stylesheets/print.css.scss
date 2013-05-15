@@ -40,7 +40,7 @@ body{
 }
 
 .btn.disabled{
-	disabled:inline-block;
+	display:inline-block !important;
 }
 
 * {

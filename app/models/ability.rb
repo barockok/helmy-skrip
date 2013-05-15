@@ -29,7 +29,9 @@ class Ability
     can :manage, Transaction
     can :manage, Nasabah
     cannot [:edit, :update, :new, :create, :destroy], Nasabah
+    cannot [:edit, :update, :new, :create, :destroy], Transaction
     can :manage, :reports
+    can :manage, AdministrationFee
   end
 
 end

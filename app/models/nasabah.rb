@@ -4,7 +4,7 @@ class Nasabah < ActiveRecord::Base
 	RELIGIONS 		= %w{islam kriten katolik hindu budha other}
 	NATIONALITIES = ['indonesia', 'united state', 'singapore', 'malaysia', 'australia', 'united kingdom']
 
-	has_many :transactions
+	has_many :transactions, :dependent => :destroy
 	belongs_to :product
 
 	validates_presence_of :nama_lengkap, :product_id 

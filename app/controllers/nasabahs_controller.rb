@@ -56,7 +56,7 @@ class NasabahsController < InternalController
   def destroy
     @nasabah.destroy
     respond_to do |format|
-      format.html { redirect_to nasabahs_url }
+      format.html { flash[:notice] = "Successfully destroy #{@nasabah.nama_lengkap} | #{@nasabah.account_number}" ; redirect_to nasabahs_url }
       format.json { head :no_content }
     end
   end

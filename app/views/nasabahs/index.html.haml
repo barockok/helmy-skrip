@@ -38,7 +38,7 @@
 						-if can?(:update, nasabah)
 							= link_to '<i class="icon icon-pencil"></i>'.html_safe, edit_nasabah_path(nasabah), :class => 'btn btn-mini'
 						-if can?(:destroy, nasabah)
-							= link_to '<i class="icon icon-remove"></i>'.html_safe, nasabahs_path, :class => 'btn btn-mini',:method => :delete, :data => { :confirm => 'Are you sure?' }
+							= link_to '<i class="icon icon-remove"></i>'.html_safe, nasabah_path(nasabah), :class => 'btn btn-mini',:method => :delete, :data => { :confirm => 'Are you sure?' }
 					-if nasabah.unreviewed? and can?(:approve, nasabah)	
 						.btn-group
 							= link_to '<i class="icon icon-ok-sign"></i> Approve'.html_safe, approve_nasabah_path(nasabah), :class => 'btn btn-mini btn-success', :title => 'Approve', :method => :put

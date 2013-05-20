@@ -5,12 +5,14 @@ chosen-sprite.png: chosen-sprite-446e459d07e35a80536324bf09caf50c.png
 chosen-sprite/index.png: chosen-sprite-446e459d07e35a80536324bf09caf50c.png
 icon_brand.png: icon_brand-e3ae525277dbc0e711363f9528e776dd.png
 icon_brand/index.png: icon_brand-e3ae525277dbc0e711363f9528e776dd.png
+iphone_original_tone.mp3: iphone_original_tone-7942d656e286e05645de619256ddb484.mp3
+iphone_original_tone/index.mp3: iphone_original_tone-7942d656e286e05645de619256ddb484.mp3
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 text_brand.png: text_brand-533ac9a9de91028347a5960497d99713.png
 text_brand/index.png: text_brand-533ac9a9de91028347a5960497d99713.png
-application.js: application-33ca6feaeff1908b29fbceba79d61b08.js
-application/index.js: application-33ca6feaeff1908b29fbceba79d61b08.js
+application.js: application-2553ba471be967ae84a8b799c0f89a88.js
+application/index.js: application-2553ba471be967ae84a8b799c0f89a88.js
 application.css: application-6cec5f7d619e91ddb14f0cd34702c0c5.css
 application/index.css: application-6cec5f7d619e91ddb14f0cd34702c0c5.css
 devise.css: devise-dbd2da8289c0f5d469f7e6d33f1ce8d5.css

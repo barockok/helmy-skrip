@@ -36,7 +36,7 @@ class Product < ActiveRecord::Base
 	end
 
 	def self.collection_selects
-		Product.order(:version).select(:code).uniq.map do |p|
+		Product.select(:code).uniq.map do |p|
 			pr = Product.where(:code => p.code).order('version desc').limit(1).first
 			["#{pr.name} v.#{pr.version}", p.id]
 		end

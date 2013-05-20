@@ -32,7 +32,7 @@
 				.btn-group
 					= link_to '<i class="icon icon-pencil"></i>'.html_safe, edit_product_path(product), :class => 'btn btn-mini btn-primary', :title => 'Edit'
 					= link_to '<i class="icon icon-remove"></i>'.html_safe, product, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger', :title => 'Destroy'
-					= link_to '<i class="icon icon-upload-alt"></i>'.html_safe, edit_product_path(product), :class => 'btn btn-mini btn-info', :title => 'Upgrade'
+					= link_to '<i class="icon icon-upload-alt"></i>'.html_safe, upgrade_product_path(product), :class => 'btn btn-mini btn-info', :title => 'Upgrade'
 
 %br
 

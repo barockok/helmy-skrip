@@ -1,6 +1,6 @@
 class ProductsController < InternalController
+  before_filter :set_master_product, :only => [:upgrade, :do_upgrade]
   before_filter :set_product, only: [:show, :edit, :update, :destroy]
-
   # GET /products
   # GET /products.json
   def index
@@ -24,7 +24,6 @@ class ProductsController < InternalController
   # POST /products
   # POST /products.json
   def create
-    puts product_params
     @product = Product.new(product_params)
 
     respond_to do |format|
@@ -38,11 +37,24 @@ class ProductsController < InternalController
     end
   end
 
+  def upgrade
+    @product = Product.new(@master_product.clone_attr_for_upgrade)
+  end
+
+  def do_upgrade
+    @product = Product.new(@master_product.clone_attr_for_upgrade.merge(product_params))
+    if @product.save
+      redirect_to @product, notice: 'Product was successfully upgraded.'
+    else  
+      flash[:alert] = @product.errors.to_a.join(', ')
+      render :action => :upgrade
+    end
+  end
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
-      if @product.update(product_params)
+      if @product.update_attributes(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
@@ -55,7 +67,7 @@ class ProductsController < InternalController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
+    flash[:alert] = @product.errors.to_a.join(', ') unless @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url }
       format.json { head :no_content }
@@ -67,7 +79,10 @@ class ProductsController < InternalController
     def set_product
       @product = Product.find(params[:id])
     end
-
+    def set_master_product
+      set_product
+      @master_product = @product
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :first_credit, :month_credit, :description, :months_period, :version, :code)

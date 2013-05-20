@@ -4,7 +4,12 @@ HelmySkrip::Application.routes.draw do
   resources :transactions
   resources :administration_fees , :only => [:index]
 
-  resources :products
+  resources :products do
+    member do
+      get :upgrade
+      post :upgrade, :action => :do_upgrade
+    end
+  end
 
   resources :nasabahs do
     member do

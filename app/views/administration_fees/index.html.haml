@@ -4,6 +4,11 @@
 			%h3.no-bold
 				%i.icon.icon-money
 				Administration Fee
+		.span4
+			.pull-right
+				.btn-group
+					= link_to '<i class="icon icon-download"></i> Download Excel'.html_safe, url_for(params.merge(:format => :csv)), :class => 'btn btn-mini'
+					= link_to '<i class="icon icon-print"></i> Print'.html_safe, '#', :class => 'btn btn-mini', :onclick=> "window.print()"
 
 =render 'internal/filter'
 %table.table.table-condensed.table-stripped

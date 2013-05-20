@@ -28,7 +28,7 @@ $(document).ready(function(){
   console.log(notifPermission)
   if (notifPermission == 1 ) { //  PERMISSION_NOT_ALLOWED
 	// create notification request
-	notif_req = '<div class="notif-wizard"><div class="row-fluid"><div class="span6 offset3"><div class="alert alert-info center-text">System membutuhkan izin anda <br/>untuk mempublikasikan notifikasi<br/> <span class="btn btn-mini" id="notifReqTrig">Set Notication Permission</span> </di></div></di></div>'
+	notif_req = '<div class="notif-wizard"><div class="row-fluid"><div class="span10 offset1"><div class="alert alert-info center-text">System membutuhkan izin anda <br/>untuk mempublikasikan notifikasi<br/> <span class="btn btn-mini" id="notifReqTrig">Set Notication Permission</span> </di></div></di></div>'
 	$('.root-container .inner').prepend(notif_req)
   }
   function checkNotificationPersmissionCallback(){

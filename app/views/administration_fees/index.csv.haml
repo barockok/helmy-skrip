@@ -1,0 +1,6 @@
+Administration Fee #{@filter_params[:from].to_date.strftime("%d/%m/%Y")} - #{@filter_params[:to].to_date.strftime("%-d/%b/%Y")}
+
+
+Tanggal, Amount, Keterangan
+-for af in @administration_fees
+	="#{af.created_at.strftime('%d/%m/%y %I:%M %p')}, #{af.amount}, #{af.description}"

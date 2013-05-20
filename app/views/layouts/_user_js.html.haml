@@ -1,0 +1,20 @@
+-if current_user
+	-if current_user.is?(:direktur) or current_user.is?(:admin)
+		:javascript
+			// director subscribe to channel
+			var nasabah_channel = pusher.subscribe('nasabah_channel');
+			nasabah_channel.bind('new', function(data){
+			    Notif.show({
+			        msg : data.message,
+			        title : 'Nasabah Baru',
+			        ondisplay : function(){
+			            playSound()
+			        },
+			        onclick : function(){
+			            stopSound()
+			            window.location.href = data.location
+			        }
+			    })
+			})
+
+

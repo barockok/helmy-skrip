@@ -9,11 +9,19 @@ class Nasabah < ActiveRecord::Base
 
 	validates_presence_of :nama_lengkap, :product_id 
 	after_create :add_admin_fee
+	after_create :notify_director
 	around_update :check_approval
 	act_as_date_filter
 	act_as_group_by_date
 	def add_admin_fee
 		AdministrationFee.create(:description => "Biaya Applikasi Nasabah baru No.rek #{self.account_number}", :amount => 50000)
+	end
+	def notify_director
+		begin
+			Pusher['nasabah_channel'].trigger 'new', :message => "#{self.nama_lengkap} - #{self.account_number} butuh direview", :location => "/nasabahs/#{self.id}"
+		rescue Exception => e
+			Rails.logger.error "#{'*'*30}\n#{e.message}\n#{'*'*30}"
+		end
 	end
 	def check_approval
 		before = Nasabah.find(self.id).approved?

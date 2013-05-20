@@ -5,7 +5,8 @@ class Product < ActiveRecord::Base
 	after_initialize :assign_version, :on => :create, :if => 'new_record? and code.blank? == false'
 	before_validation :assign_first_credit
 	before_destroy :check_nasabah_existence
-
+	has_many :nasabahs
+	has_many :other_versions, :class_name => 'Product', :foreign_key => 'code' , :primary_key => 'code'
 	def assign_first_credit
 		self.first_credit = self.month_credit
 	end
@@ -38,7 +39,7 @@ class Product < ActiveRecord::Base
 	def self.collection_selects
 		Product.select(:code).uniq.map do |p|
 			pr = Product.where(:code => p.code).order('version desc').limit(1).first
-			["#{pr.name} v.#{pr.version}", p.id]
+			["#{pr.name} v.#{pr.version}", pr.id]
 		end
 	end
 end

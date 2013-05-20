@@ -84,6 +84,6 @@ class NasabahsController < InternalController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nasabah_params
-      params.require(:nasabah).permit(:nama_lengkap , :tempa, :tanggal_lahir , :jenis_kelamin , :kewarganegaraan , :no_iden, :type_identitas, :expire_identitas, :no_npwp , :alamat_rumah, :alamat_surat, :no_tlp_kantor, :no_ponsel , :no_faximile , :email , :rekening_koran_gabungan , :status_pernikahan , :status_rumah_tinggal, :tanggal_rumah_tinggal, :no_tlp_rumah , :pekerjaan_utama, :pendapatan_bulanan , :bidang_usaha , :sumber_dana , :tujuan_penggunaan_dana , :tujuan_penggunaan_rekening , :nama_ibu_kandung , :agama, :product_id)
+      params.require(:nasabah).permit(:nama_lengkap , :tempa, :tanggal_lahir , :jenis_kelamin , :kewarganegaraan , :no_identitas, :type_identitas, :expire_identitas, :no_npwp , :alamat_rumah, :alamat_surat, :no_tlp_kantor, :no_ponsel , :no_faximile , :email , :rekening_koran_gabungan , :status_pernikahan , :status_rumah_tinggal, :tanggal_rumah_tinggal, :no_tlp_rumah , :pekerjaan_utama, :pendapatan_bulanan , :bidang_usaha , :sumber_dana , :tujuan_penggunaan_dana , :tujuan_penggunaan_rekening , :nama_ibu_kandung , :agama, :product_id)
     end
 end
